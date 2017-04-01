@@ -1,0 +1,7 @@
+﻿Test A 50min
+Test B 3min
+Test C 30min
+Test D 40min
+Test E 60min
+Test F 60min
+Test G 60min

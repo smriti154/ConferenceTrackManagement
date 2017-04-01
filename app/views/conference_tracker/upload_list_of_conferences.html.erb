@@ -1,0 +1,5 @@
+<h2>Upload your list of conferences<h2>
+ <%= form_tag({:action => 'get_conferences_schedules'}, :multipart => true) do %>
+   <%= file_field_tag "file" %></br></br>
+   <%= submit_tag "Upload" %>
+<% end %>

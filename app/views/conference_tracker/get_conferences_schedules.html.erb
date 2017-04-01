@@ -1,0 +1,37 @@
+<% if !@all_scheduled_conferences.empty? %>
+	<% no_of_tracks_scheduled = (@all_scheduled_conferences.length/2.0).round %>
+	<% track_number = 0 %>
+	<% @all_scheduled_conferences.each_with_index  do |(x,y),  index| %>
+		<% if index == 0 || index % 2 == 0 %>
+		    <% track_number = track_number + 1 %>
+			<%="#######Track #{track_number}#########" if track_number <= no_of_tracks_scheduled %></br></br>
+			____Morning shift____</br></br>
+			<% morning_shift_conferences_list = ConferenceTimeScheduler.set_time_according_to_slot(@all_scheduled_conferences[index], "Morning") %>
+			<% morning_shift_conferences_list.each do |x, y|%>
+			<%= "#{x}AM    #{y}" %></br>
+			<% end %>
+			<%= "12:00PM  Lunch"%></br></br>
+		<% elsif index % 2 != 0 %>
+			_____Evening shift____</br></br>
+			<% evening_shift_conferences_list = ConferenceTimeScheduler.set_time_according_to_slot(@all_scheduled_conferences[index], "Evening") %>
+			<% evening_shift_conferences_list.each do |x, y|%>
+			<%= "#{x}PM    #{y}" %></br>
+			<% end %>
+			<%= "05:00PM    Networking Event"%></br></br>
+		<% end %>
+	<% end %>
+<% else %>
+Invalid file format!! Only .txt files are supported currently...!!</br>
+Fomat should be:</br>
+Name of the conference duration in minutes</br></br>
+Eg : Ruby on Rails 30min
+<% end %>
+
+
+
+
+
+
+
+
+
